@@ -1,95 +1,71 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client"
+import { Button, PasswordInput, TextInput, Title, Box, useMantineTheme } from '@mantine/core'
+import { FiLock, FiMail } from "react-icons/fi"
+import { Text, Group, PasswordInputProps, Anchor } from '@mantine/core';
+
 
 export default function Home() {
+
+const theme = useMantineTheme()
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <Box sx={(theme) => ({
+        backgroundColor: theme.colors.dark[5],
+        borderRadius: theme.radius.sm,
+        padding: theme.spacing.xl,
+        width: "27rem"
+      })}>
+        <TextInput
+          label="Email Address"
+          icon={<FiMail />}
+          placeholder="test@gmail.com"
+          size="lg"
+          styles={{
+            label: { color: "#6C7293", fontSize: "0.9rem" },
+            input: {
+              borderColor: "#000",
+              color: "#6C7293",
+              backgroundColor: "black",
+              "&:focus": { borderColor: theme.colors.primary[0] },
+              "&::placeholder": { color: "#6C7293" }
+            }
+          }}
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <PasswordInput
+          label="Password"
+          icon={<FiLock />}
+          placeholder="**********"
+          size="lg"
+          styles={{
+            label: { color: "#6C7293", fontSize: "0.9rem" },
+            input: {
+              borderColor: "#000",
+              backgroundColor: "black",
+              "&:focus": { borderColor: theme.colors.primary[0] },
+              color: "#6C7293",
+            }
+          }}
+          mt={15}
+        />
+        <Button size="lg" fullWidth mb={30} mt={15}
+         sx={(theme)=> ({
+           backgroundColor: theme.colors.primary,
+           ":hover": {
+            backgroundColor: theme.colors.primary[7]
+          }
+        })}>
+          Login
+        </Button>
+      </Box>
+    </Box>
   )
 }
